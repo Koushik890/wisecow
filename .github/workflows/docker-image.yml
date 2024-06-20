@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Automated Docker Build and Kubernetes Deployment
 
 on:
   push:

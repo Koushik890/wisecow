@@ -40,7 +40,7 @@ jobs:
         run: echo "${{ secrets.KUBECONFIG_CONTENT }}" | base64 --decode > $HOME/.kube/config
 
       - name: Create Kubernetes Namespace
-        run: kubectl apply -f wisecow-namespace.yaml
+        run: kubectl apply -f namespace.yaml
 
       - name: Create TLS Secret
         run: |

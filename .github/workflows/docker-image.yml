@@ -1,4 +1,4 @@
-name: Automated Docker Build and Kubernetes Deployment
+name: CI/CD Pipeline
 
 on:
   push:
@@ -30,14 +30,13 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Kubernetes
-        uses: azure/k8-set-context@v1
+        uses: azure/setup-kubectl@v1
         with:
           version: 'latest'
 
@@ -47,9 +46,6 @@ jobs:
       - name: Create kubeconfig
         run: echo "${{ secrets.KUBECONFIG_CONTENT }}" | base64 --decode > $HOME/.kube/config
 
-      - name: Create Kubernetes Namespace
-        run: kubectl apply -f namespace.yaml --validate=false
-
       - name: Create TLS Secret
         run: |
           echo "${{ secrets.TLS_CERT }}" | base64 --decode > tls.crt
@@ -58,6 +54,7 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
+          kubectl apply -f namespace.yaml --validate=false
           kubectl apply -f wisecow-deployment.yaml
           kubectl apply -f wisecow-service.yaml
           kubectl apply -f wisecow-ingress.yaml

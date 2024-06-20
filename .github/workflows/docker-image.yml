@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Kubernetes
-        uses: azure/setup-kubectl@v1
+        uses: azure/k8-set-context@v1
         with:
           version: 'latest'
 

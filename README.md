@@ -1,28 +1,54 @@
-# Cow wisdom web server
+# Wisecow Application Deployment
+
+## Overview
+This repository contains the Wisecow application, which delivers cow-themed wisdom quotes. The project aims to containerize and deploy the application in a Kubernetes environment, implement continuous integration and deployment (CI/CD) using GitHub Actions, and ensure secure TLS communication.
 
 ## Prerequisites
+- Docker installed
+- Kubernetes cluster (e.g., Minikube)
+- kubectl installed
+- GitHub account
 
+## Project Structure
+- **wisecow.sh**: Script to run the Wisecow application.
+- **Dockerfile**: Defines the Docker image for the application.
+- **Kubernetes Manifests**: YAML files for deploying the application in Kubernetes.
+- **GitHub Actions Workflow**: CI/CD pipeline setup.
+
+## Steps to Deploy
+
+### 1. Dockerization
+Create a Dockerfile to containerize the Wisecow application.
+
+### 2. Kubernetes Deployment
+Create Kubernetes manifests for namespace, deployment, service, and ingress.
+
+### 3. TLS Implementation
+Create a TLS secret for secure communication.
+
+### 4. CI/CD Pipeline with GitHub Actions
+Set up a GitHub Actions workflow to automate the build and deployment process.
+
+## Requirements
+1. Dockerize the Wisecow application and create Kubernetes manifests.
+2. Implement a GitHub Actions workflow to automate the build and push process.
+3. [Challenge Goal]: Enable secure TLS communication.
+
+## Expected Artifacts
+1. GitHub repository with the app, Dockerfile, Kubernetes manifests, and other artifacts.
+2. GitHub Actions workflow.
+3. Private GitHub repository with access enabled for `nyrahul` and `SujithKasireddy`.
+
+## Usage Instructions
+
+### Prerequisites
+Install required packages:
 ```
 sudo apt install fortune-mod cowsay -y
 ```
 
-## How to use?
-
-1. Run `./wisecow.sh`
-2. Point the browser to server port (default 4499)
-
 ## What to expect?
-![wisecow](https://github.com/nyrahul/wisecow/assets/9133227/8d6bfde3-4a5a-480e-8d55-3fef60300d98)
+![wisecow](image.png)
 
-# Problem Statement
-Deploy the wisecow application as a k8s app
-
-## Requirement
-1. Create Dockerfile for the image and corresponding k8s manifest to deploy in k8s env. The wisecow service should be exposed as k8s service.
-2. Github action for creating new image when changes are made to this repo
-3. [Challenge goal]: Enable secure TLS communication for the wisecow app.
-
-## Expected Artifacts
-1. Github repo containing the app with corresponding dockerfile, k8s manifest, any other artifacts needed.
-2. Github repo with corresponding github action.
-3. Github repo should be kept private and the access should be enabled for following github IDs: nyrahul, SujithKasireddy
+### Notes
+This repository was cloned from nyrahul/wisecow and extended to include Dockerization, Kubernetes deployment, and a CI/CD pipeline setup.
